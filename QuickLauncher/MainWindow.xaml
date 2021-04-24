@@ -1,0 +1,47 @@
+﻿<Window x:Class="QuickLauncher.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuickLauncher"
+        mc:Ignorable="d"
+        Title="Quick Launcher 2.2 - Ctrl + Alt + Q" Height="350.636" Width="448.982" ResizeMode="CanMinimize" Icon="idea.ico" KeyUp="Window_KeyUp">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="BtnCreate" Content="Create" Margin="319,257,0,0" Click="BtnCreateNote_Click" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" TabIndex="52"/>
+        <TextBox x:Name="TxtNoteName" Margin="10,257,0,0" TextWrapping="Wrap" Text="" Height="28" VerticalAlignment="Top" KeyUp="TxtNoteName_KeyUp" TabIndex="51" HorizontalAlignment="Left" Width="304"/>
+        <Label x:Name="LblStatus" Content="OK GO!" Height="26" VerticalAlignment="Bottom" MouseDoubleClick="LblStatus_MouseDoubleClick" Margin="0,0,0,-0.333"/>
+        <Label x:Name="LblCreateNote" Content="Create Note:" Margin="5,230,0,0" HorizontalAlignment="Left" Width="77" Height="26" VerticalAlignment="Top" MouseDoubleClick="LblCreateNote_MouseDoubleClick"/>
+        <Button x:Name="BtnAction1" Margin="10,153,0,0" Click="BtnAction1_Click" Height="55" VerticalAlignment="Top" TabIndex="52" HorizontalAlignment="Left" Width="133" HorizontalContentAlignment="Left" VerticalContentAlignment="Top">
+            <TextBlock x:Name="BtnAction1Text" Text="Action 1" TextWrapping="Wrap"/>
+        </Button>
+        <Button x:Name="BtnAction2" Margin="148,153,0,0" Click="BtnAction2_Click" TabIndex="52" Height="55" VerticalAlignment="Top" HorizontalAlignment="Left" Width="133" HorizontalContentAlignment="Left" VerticalContentAlignment="Top">
+            <TextBlock x:Name="BtnAction2Text" Text="Action 2" TextWrapping="Wrap"/>
+        </Button>
+        <Button x:Name="BtnAction3" Margin="286,153,0,0" Click="BtnAction3_Click" TabIndex="52" HorizontalAlignment="Left" Width="133" Height="55" VerticalAlignment="Top" HorizontalContentAlignment="Left" VerticalContentAlignment="Top">
+            <TextBlock x:Name="BtnAction3Text" Text="Action 3" TextWrapping="Wrap"/>
+        </Button>
+        <Button x:Name="BtnAction4" Margin="10,93,0,0" Click="BtnAction4_Click" Height="55" VerticalAlignment="Top" TabIndex="52" HorizontalAlignment="Left" Width="133" HorizontalContentAlignment="Left" VerticalContentAlignment="Top">
+            <TextBlock x:Name="BtnAction4Text" Text="Action 4" TextWrapping="Wrap"/>
+        </Button>
+        <Button x:Name="BtnAction5" Margin="148,93,0,0" Click="BtnAction5_Click" Height="55" VerticalAlignment="Top" HorizontalAlignment="Left" Width="133" TabIndex="52" HorizontalContentAlignment="Left" VerticalContentAlignment="Top">
+            <TextBlock x:Name="BtnAction5Text" Text="Action 5" TextWrapping="Wrap"/>
+        </Button>
+        <Button x:Name="BtnAction6" Margin="286,93,0,0" Click="BtnAction6_Click" Height="55" VerticalAlignment="Top" HorizontalAlignment="Left" Width="133" TabIndex="52" HorizontalContentAlignment="Left" VerticalContentAlignment="Top">
+            <TextBlock x:Name="BtnAction6Text" Text="Action 6" TextWrapping="Wrap"/>
+        </Button>
+        <Button x:Name="BtnAction7" Margin="10,33,0,0" Click="BtnAction7_Click" Height="55" VerticalAlignment="Top" TabIndex="52" HorizontalAlignment="Left" Width="133" HorizontalContentAlignment="Left" VerticalContentAlignment="Top">
+            <TextBlock x:Name="BtnAction7Text" Text="Action 7" TextWrapping="Wrap"/>
+        </Button>
+        <Button x:Name="BtnAction8" Margin="148,33,0,0" Click="BtnAction8_Click" Height="55" VerticalAlignment="Top" TabIndex="52" HorizontalAlignment="Left" Width="133" HorizontalContentAlignment="Left" VerticalContentAlignment="Top">
+            <TextBlock x:Name="BtnAction8Text" Text="Action 8" TextWrapping="Wrap"/>
+        </Button>
+        <Button x:Name="BtnAction9" Margin="286,33,0,0" Click="BtnAction9_Click" Height="55" VerticalAlignment="Top" TabIndex="52" HorizontalAlignment="Left" Width="133" HorizontalContentAlignment="Left" VerticalContentAlignment="Top">
+            <TextBlock x:Name="BtnAction9Text" Text="Action 9" TextWrapping="Wrap"/>
+        </Button>
+        <Label x:Name="LblNumericKeypad" Content="Numeric keypad:" Margin="4,6,0,0" HorizontalAlignment="Left" Width="100" Height="26" VerticalAlignment="Top" MouseDoubleClick="LblCreateNote_MouseDoubleClick"/>
+        <Label x:Name="LblNumericKeypadNote" Content="Note: press Ctrl to enter execute setting." Margin="6,205,0,0" HorizontalAlignment="Left" Width="242" Height="26" VerticalAlignment="Top" MouseDoubleClick="LblCreateNote_MouseDoubleClick"/>
+    </Grid>
+</Window>
