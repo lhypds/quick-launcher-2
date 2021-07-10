@@ -5,6 +5,18 @@ Quick Launcher 2
 Quick Launcher 2 is a desktop app that help user run command super fast
 
 
+Screenshot
+----------
+
+![image](https://user-images.githubusercontent.com/4526937/125150146-7d554f00-e178-11eb-9013-7e95d96c6aa6.png)
+
+
+Shortcut
+--------
+
+Ctrl + click a command, enter the command editing  
+
+
 Command Examples
 ----------------
 
