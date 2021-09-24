@@ -37,3 +37,9 @@ type C:\example.txt | clip
 ```
 echo | set /p = "<img src="IMG_URL" width="400" />" | clip 
 ```
+
+* Copy current datetime string to clipboard  
+
+```
+echo | set /p = "%date% %time%" | clip 
+```
