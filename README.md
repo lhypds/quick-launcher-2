@@ -2,7 +2,8 @@
 Quick Launcher 2
 ================
 
-Quick Launcher 2 is a desktop app that help user run command super fast
+Quick Launcher 2 is a desktop app that help user run command super fast  
+User can use [WinHotKey](https://directedge.us/content/winhotkey/) to quickly launch it by shortcut
 
 
 Screenshot
