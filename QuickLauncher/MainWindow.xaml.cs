@@ -171,6 +171,7 @@ namespace QuickLauncher
                 FadeStatusBarText();
             }
             FileUtils.Open(notePath);
+            Close();
         }
 
         private void TxtNoteName_KeyUp(object sender, KeyEventArgs e)
