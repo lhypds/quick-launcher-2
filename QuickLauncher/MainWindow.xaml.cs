@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuickLauncher.Utils;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -169,7 +170,7 @@ namespace QuickLauncher
                 LblStatus.Content = note + " Note.txt created.";
                 FadeStatusBarText();
             }
-            Process.Start(@"C:\Users\" + Environment.UserName + @"\AppData\Local\Programs\Microsoft VS Code\Code.exe", "\"" + notePath + "\"");
+            FileUtils.Open(notePath);
         }
 
         private void TxtNoteName_KeyUp(object sender, KeyEventArgs e)
