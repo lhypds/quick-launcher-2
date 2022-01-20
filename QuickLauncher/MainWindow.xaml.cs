@@ -173,7 +173,7 @@ namespace QuickLauncher
                 LblStatus.Content = note + " Note.txt created.";
                 FadeStatusBarText();
             }
-            Process.Start(@"C:\Users\" + Environment.UserName + @"\AppData\Local\Programs\Microsoft VS Code\Code.exe", "\"" + notePath + "\"");
+            Process.Start(notePath);
         }
 
         private void TxtNoteName_KeyUp(object sender, KeyEventArgs e)
