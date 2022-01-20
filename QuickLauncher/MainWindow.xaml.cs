@@ -1,4 +1,6 @@
 ﻿using System;
+﻿using QuickLauncher.Utils;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -143,7 +145,7 @@ namespace QuickLauncher
             string note = TxtNoteName.Text.Trim();
             if (note.EndsWith(" Note"))
                 note = note.Replace(" Note", "");
-            
+                
             if (note.Equals(string.Empty)) { MessageBox.Show("Please input note name.", "Message"); return; }
 
             string noteFolderPath = @"C:\Users\" + Environment.UserName + @"\Dropbox\Note\";
@@ -172,7 +174,8 @@ namespace QuickLauncher
                 LblStatus.Content = note + " Note.txt created.";
                 FadeStatusBarText();
             }
-            Process.Start(notePath);
+            FileUtils.Open(notePath);
+            Close();
         }
 
         private void TxtNoteName_KeyUp(object sender, KeyEventArgs e)

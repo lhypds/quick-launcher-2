@@ -2,7 +2,8 @@
 Quick Launcher 2
 ================
 
-Quick Launcher 2 is a desktop app that help user run command super fast
+Quick Launcher 2 is a desktop app that help user run command super fast  
+User can use [WinHotKey](https://directedge.us/content/winhotkey/) to quickly launch it by shortcut
 
 
 Screenshot
@@ -36,4 +37,10 @@ type C:\example.txt | clip
 
 ```
 echo | set /p = "<img src="IMG_URL" width="400" />" | clip 
+```
+
+* Copy current datetime string to clipboard  
+
+```
+echo | set /p = "%date% %time%" | clip 
 ```
