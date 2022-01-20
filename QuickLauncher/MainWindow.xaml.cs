@@ -141,6 +141,9 @@ namespace QuickLauncher
         private void CreateNote()
         {
             string note = TxtNoteName.Text.Trim();
+            if (note.EndsWith(" Note"))
+                note = note.Replace(" Note", "");
+            
             if (note.Equals(string.Empty)) { MessageBox.Show("Please input note name.", "Message"); return; }
 
             string noteFolderPath = @"C:\Users\" + Environment.UserName + @"\Dropbox\Note\";
