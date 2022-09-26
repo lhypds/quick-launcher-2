@@ -1,6 +1,7 @@
 ﻿using QuickLauncher.Utils;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -36,8 +37,22 @@ namespace QuickLauncher
             this.Left = (screenWidth / 2) - (windowWidth / 2);
             this.Top = (screenHeight / 2) - (windowHeight / 2);
 
+            // Load config
+            SetEnableNote(SimpleConfigUtils.IsTrue("enable_note"));
+
             // Load action name
             RefreshBtnContent();
+        }
+
+        private void SetEnableNote(bool? isEnable)
+        {
+            if (isEnable == null || (bool)!isEnable)
+            {
+                LblCreateNote.Visibility = Visibility.Collapsed;
+                TxtNoteName.Visibility = Visibility.Collapsed;
+                BtnCreate.Visibility = Visibility.Collapsed;
+                WindowMain.Height = WindowMain.Height - 40;
+            }
         }
 
         private void ExecuteAction(int actionNo)

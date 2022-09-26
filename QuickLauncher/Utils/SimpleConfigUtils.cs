@@ -8,10 +8,15 @@ using System.Text;
 
 namespace QuickLauncher.Utils
 {
+    // Version 1.0.0
+    // Mon 09/26/2022 10:24:15.92
     internal class SimpleConfigUtils
     {
         const string CONFIG = "config.txt";
         const char SPLITER = ',';
+        const string TRUE = "true";
+        const string FALSE = "false";
+
         static readonly List<string> ConfigStrings = new List<string>
         {
             "tf_executable_path",
@@ -42,6 +47,20 @@ namespace QuickLauncher.Utils
                 }
             }
             return configs;
+        }
+
+        public static bool? IsTrue(string key)
+        {
+            StringDictionary configs = ReadConfigs();
+            if (configs.ContainsKey(key))
+            {
+                if (configs[key].ToLower().Equals(TRUE))
+                    return true;
+                else if (configs[key].ToLower().Equals(FALSE))
+                    return false;
+                else return null;
+            }
+            else return null;
         }
 
         public static string GetConfig(string key)

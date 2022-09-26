@@ -68,6 +68,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Utils\FileUtils.cs" />
+    <Compile Include="Utils\SimpleConfigUtils.cs" />
     <Page Include="ActionSetting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
