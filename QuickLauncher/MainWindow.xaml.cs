@@ -26,6 +26,9 @@ namespace QuickLauncher
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<string> Notes = new List<string>();
+        string NoteFolderPath = @"C:\Users\" + Environment.UserName + @"\Dropbox\Note\";
+
         public MainWindow()
         {
             InitializeComponent();
@@ -167,8 +170,7 @@ namespace QuickLauncher
 
             if (note.Equals(string.Empty)) { MessageBox.Show("Please input note name.", "Message"); return; }
 
-            string noteFolderPath = @"C:\Users\" + Environment.UserName + @"\Dropbox\Note\";
-            string notePath = noteFolderPath + note + " Note.txt";
+            string notePath = NoteFolderPath + note + " Note.txt";
             if (File.Exists(notePath))
             {
                 LblStatus.Content = note + " Note.txt already exist.";
@@ -202,6 +204,21 @@ namespace QuickLauncher
         private void TxtNoteName_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter) CreateNote();
+        }
+
+        private void TxtNoteName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+        }
+
+        private void TxtNoteName_GotFocus(object sender, RoutedEventArgs e)
+        {
+            // Load note list
+            var notes = Directory.GetFiles(NoteFolderPath, "*.txt");
+            foreach (var note in notes)
+            {
+                Notes.Add(note.Replace(".txt", ""));
+            }
         }
 
         private void LblCreateNote_MouseDoubleClick(object sender, MouseButtonEventArgs e)
