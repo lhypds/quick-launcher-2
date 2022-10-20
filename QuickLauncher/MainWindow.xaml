@@ -11,7 +11,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Button x:Name="BtnCreate" Content="Create/Open" Margin="319,257,0,0" Click="BtnCreateNote_Click" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" TabIndex="52"/>
-        <TextBox x:Name="TxtNoteName" Margin="10,257,0,0" TextWrapping="Wrap" Text="" Height="28" VerticalAlignment="Top" KeyUp="TxtNoteName_KeyUp" TabIndex="51" HorizontalAlignment="Left" Width="304" TextChanged="TxtNoteName_TextChanged" GotFocus="TxtNoteName_GotFocus"/>
+        <ComboBox x:Name="CmbNoteName" IsEditable="True" HorizontalAlignment="Left" Margin="10,257,0,0" VerticalAlignment="Top" Width="304" SelectionChanged="CmbNoteName_SelectionChanged" KeyUp="CmbNoteName_KeyUp" Height="28" TabIndex="1"/>
         <Label x:Name="LblStatus" Content="OK GO" Height="26" VerticalAlignment="Bottom" MouseDoubleClick="LblStatus_MouseDoubleClick" Margin="0,0,0,-0.333"/>
         <Label x:Name="LblCreateNote" Content="Note:" Margin="5,230,0,0" HorizontalAlignment="Left" Width="77" Height="26" VerticalAlignment="Top" MouseDoubleClick="LblCreateNote_MouseDoubleClick"/>
         <Button x:Name="BtnAction1" Margin="10,153,0,0" Click="BtnAction1_Click" Height="55" VerticalAlignment="Top" TabIndex="52" HorizontalAlignment="Left" Width="133" HorizontalContentAlignment="Left" VerticalContentAlignment="Top">

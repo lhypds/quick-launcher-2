@@ -46,6 +46,15 @@ namespace QuickLauncher
 
             // Load action name
             RefreshBtnContent();
+
+            // Load note list
+            var noteFilePaths = Directory.GetFiles(NoteFolderPath, "*.txt");
+            foreach (var noteFilePath in noteFilePaths)
+            {
+                string noteName = noteFilePath.Replace(".txt", "").Replace(NoteFolderPath, "");
+                Notes.Add(noteName);
+                CmbNoteName.Items.Add(noteName);
+            }
         }
 
         private void SetEnableNote(bool? isEnable)
@@ -53,7 +62,7 @@ namespace QuickLauncher
             if (isEnable == null || (bool)!isEnable)
             {
                 LblCreateNote.Visibility = Visibility.Collapsed;
-                TxtNoteName.Visibility = Visibility.Collapsed;
+                CmbNoteName.Visibility = Visibility.Collapsed;
                 BtnCreate.Visibility = Visibility.Collapsed;
                 WindowMain.Height = WindowMain.Height - 40;
             }
@@ -160,7 +169,7 @@ namespace QuickLauncher
 
         private void CreateNote()
         {
-            string note = TxtNoteName.Text.Trim();
+            string note = CmbNoteName.Text.Trim();
             if (note.EndsWith(" Note"))
                 note = note.Replace(" Note", "");
 
@@ -211,14 +220,14 @@ namespace QuickLauncher
             
         }
 
-        private void TxtNoteName_GotFocus(object sender, RoutedEventArgs e)
+        private void CmbNoteName_KeyUp(object sender, KeyEventArgs e)
         {
-            // Load note list
-            var notes = Directory.GetFiles(NoteFolderPath, "*.txt");
-            foreach (var note in notes)
-            {
-                Notes.Add(note.Replace(".txt", ""));
-            }
+            if (e.Key == Key.Enter) CreateNote();
+        }
+
+        private void CmbNoteName_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
 
         private void LblCreateNote_MouseDoubleClick(object sender, MouseButtonEventArgs e)
