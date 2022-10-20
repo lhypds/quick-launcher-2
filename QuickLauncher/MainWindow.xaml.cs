@@ -215,19 +215,14 @@ namespace QuickLauncher
             if (e.Key == Key.Enter) CreateNote();
         }
 
-        private void TxtNoteName_TextChanged(object sender, TextChangedEventArgs e)
+        private void CmbNoteName_GotFocus(object sender, RoutedEventArgs e)
         {
-            
+            CmbNoteName.IsDropDownOpen = true;
         }
 
         private void CmbNoteName_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter) CreateNote();
-        }
-
-        private void CmbNoteName_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
 
         private void LblCreateNote_MouseDoubleClick(object sender, MouseButtonEventArgs e)
