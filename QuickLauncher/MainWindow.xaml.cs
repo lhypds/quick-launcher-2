@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -159,7 +160,11 @@ namespace QuickLauncher
             string note = TxtNoteName.Text.Trim();
             if (note.EndsWith(" Note"))
                 note = note.Replace(" Note", "");
-            
+
+            // Change to title case
+            TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
+            note = textInfo.ToTitleCase(note);
+
             if (note.Equals(string.Empty)) { MessageBox.Show("Please input note name.", "Message"); return; }
 
             string noteFolderPath = @"C:\Users\" + Environment.UserName + @"\Dropbox\Note\";
