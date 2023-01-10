@@ -27,7 +27,7 @@ namespace QuickLauncher
     public partial class MainWindow : Window
     {
         List<string> Notes = new List<string>();
-        string NoteFolderPath = @"C:\Users\" + Environment.UserName + @"\Dropbox\Note\";
+        string NoteFolderPath = @"C:\Users\" + Environment.UserName + @"\iCloudDrive\Storage.sync\Note";
 
         public MainWindow()
         {
