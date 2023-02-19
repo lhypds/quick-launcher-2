@@ -351,5 +351,10 @@ namespace QuickLauncher
         }
 
         #endregion
+
+        private void WindowMain_Loaded(object sender, RoutedEventArgs e)
+        {
+            CmbNoteName.Focus();
+        }
     }
 }

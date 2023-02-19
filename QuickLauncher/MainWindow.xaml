@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuickLauncher"
         mc:Ignorable="d"
-        Title="Quick Launcher 2.2.2" Height="350.636" Width="448.982" ResizeMode="CanMinimize" Icon="/numberpad.ico" KeyUp="Window_KeyUp">
+        Title="Quick Launcher 2.2.2" Height="350.636" Width="448.982" ResizeMode="CanMinimize" Icon="/numberpad.ico" KeyUp="Window_KeyUp" Loaded="WindowMain_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
