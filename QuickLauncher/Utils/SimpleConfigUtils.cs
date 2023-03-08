@@ -46,6 +46,10 @@ namespace QuickLauncher.Utils
                     }
                 }
             }
+            else
+            {
+                File.Create(CONFIG);
+            }
             return configs;
         }
 
