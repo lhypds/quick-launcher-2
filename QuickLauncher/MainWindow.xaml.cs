@@ -166,16 +166,12 @@ namespace QuickLauncher
             CreateNote();
             Close();
         }
-
+        
         private void CreateNote()
         {
             string note = CmbNoteName.Text.Trim();
             if (note.EndsWith(" Note"))
                 note = note.Replace(" Note", "");
-
-            // Change to title case
-            TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
-            note = textInfo.ToTitleCase(note);
 
             if (note.Equals(string.Empty)) { MessageBox.Show("Please input note name.", "Message"); return; }
 
