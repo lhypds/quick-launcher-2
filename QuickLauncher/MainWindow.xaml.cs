@@ -220,18 +220,18 @@ namespace QuickLauncher
                     note = note.Replace("\\add", "").Replace("\\create", "").Trim();
                     string filePath = NoteFolderPath + note + " Note.txt";
 
-                    // Already exist
                     if (File.Exists(filePath))
                     {
+                        // Already exist
                         LblStatus.Content = note + " Note.txt already exists.";
-                        FadeStatusBarText();
-                        Process.Start(filePath);
-                        return;
+                    }
+                    else
+                    {
+                        // Create note
+                        CreateNote(note, filePath);
+                        LblStatus.Content = note + " Note.txt created.";
                     }
 
-                    // Create note
-                    CreateNote(note, filePath);
-                    LblStatus.Content = note + " Note.txt created.";
                     FadeStatusBarText();
                     Process.Start(filePath);
                 }
