@@ -63,7 +63,7 @@ namespace QuickLauncher
             {
                 LblCreateNote.Visibility = Visibility.Collapsed;
                 CmbNoteName.Visibility = Visibility.Collapsed;
-                BtnCreate.Visibility = Visibility.Collapsed;
+                BtnExecute.Visibility = Visibility.Collapsed;
                 WindowMain.Height = WindowMain.Height - 40;
             }
         }
@@ -161,69 +161,115 @@ namespace QuickLauncher
 
         #region Create Note
 
-        private void BtnCreateNote_Click(object sender, RoutedEventArgs e)
+        private void BtnExecute_Click(object sender, RoutedEventArgs e)
         {
-            CreateNote();
-            Close();
+            OpenOrExecute();
         }
-        
-        private void CreateNote()
+
+        private void CmbNoteName_KeyUp(object sender, KeyEventArgs e)
         {
+            if (e.Key == Key.Enter) OpenOrExecute();
+        }
+
+        private void TxtNoteName_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter) OpenOrExecute();
+        }
+
+        private void OpenOrExecute()
+        {
+            // Trim note name
             string note = CmbNoteName.Text.Trim();
             if (note.EndsWith(" Note"))
-                note = note.Replace(" Note", "");
-
-            if (note.Equals(string.Empty)) { MessageBox.Show("Please input note name.", "Message"); return; }
-
-            string notePath = NoteFolderPath + note + " Note.txt";
-            if (File.Exists(notePath))
             {
-                LblStatus.Content = note + " Note.txt already exist.";
-                FadeStatusBarText();
+                note = note.Replace(" Note", "").Trim();
+            }
+
+            if (note.Equals(string.Empty)) 
+            {
+                MessageBox.Show("Please input note name.", "Message"); 
+                return;
+            }
+
+            if (note.StartsWith("\\"))
+            {
+                // Command mode
+                // 1. Create
+                if (note.StartsWith("\\create") || note.StartsWith("\\add"))
+                {
+                    note = note.Replace("\\add", "").Replace("\\create", "").Trim();
+                    string filePath = NoteFolderPath + note + " Note.txt";
+
+                    // Create note
+                    CreateNote(note, filePath);
+                    LblStatus.Content = note + " Note.txt created.";
+                    FadeStatusBarText();
+                    Process.Start(filePath);
+                }
+
+                // 2. Delete
+                if (note.StartsWith("\\del") || note.StartsWith("\\delete"))
+                {
+                    note = note.Replace("\\delete", "").Replace("\\del", "").Trim();
+                    string filePath = NoteFolderPath + note + " Note.txt";
+
+                    // Create note
+                    DeleteNote(filePath);
+                }
             }
             else
             {
-                // Write to file
-                using (StreamWriter file = new StreamWriter(notePath))
+                // Note name only mode
+                string filePath = NoteFolderPath + note + " Note.txt";
+                if (File.Exists(filePath))
                 {
-                    file.WriteLine("");
-                    file.WriteLine(note + " Note"); string equalStr = string.Empty; for (int i = 0; i < note.Length; i++) { equalStr += "="; }
-                    file.WriteLine(equalStr + "=====");
-                    file.WriteLine("");
-                    file.WriteLine("");
-                    file.WriteLine(note);
-                    string dashString = string.Empty;
-                    for (int i = 0; i < note.Length; i++) { dashString += "-"; }
-                    file.WriteLine(dashString);
-                    file.WriteLine("");
+                    LblStatus.Content = note + " Note.txt already exist.";
+                    FadeStatusBarText();
+                    Process.Start(filePath);
                 }
-                LblStatus.Content = note + " Note.txt created.";
-                FadeStatusBarText();
+                else
+                {
+                    // Create note
+                    CreateNote(note, filePath);
+                    LblStatus.Content = note + " Note.txt created.";
+                    FadeStatusBarText();
+                    Process.Start(filePath);
+                }
             }
-            Process.Start(notePath);
 
             // Exit application
             System.Windows.Application.Current.Shutdown();
         }
 
-        private void TxtNoteName_KeyUp(object sender, KeyEventArgs e)
+        private void CreateNote(string note, string filePath)
         {
-            if (e.Key == Key.Enter) CreateNote();
+            
+            using (StreamWriter file = new StreamWriter(filePath))
+            {
+                file.WriteLine("");
+                file.WriteLine(note + " Note"); string equalStr = string.Empty; for (int i = 0; i < note.Length; i++) { equalStr += "="; }
+                file.WriteLine(equalStr + "=====");
+                file.WriteLine("");
+                file.WriteLine("");
+                file.WriteLine(note);
+                string dashString = string.Empty;
+                for (int i = 0; i < note.Length; i++) { dashString += "-"; }
+                file.WriteLine(dashString);
+                file.WriteLine("");
+            }
+        }
+
+        private void DeleteNote(string filePath)
+        {
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
         }
 
         private void CmbNoteName_GotFocus(object sender, RoutedEventArgs e)
         {
             CmbNoteName.IsDropDownOpen = true;
-        }
-
-        private void CmbNoteName_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter) CreateNote();
-        }
-
-        private void LblCreateNote_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            Process.Start(@"explorer.exe", @"C:\Users\lhypd\Dropbox\Note\");
         }
 
         #endregion

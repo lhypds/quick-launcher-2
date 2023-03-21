@@ -5,15 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuickLauncher"
         mc:Ignorable="d"
-        Title="Quick Launcher 2.2.2" Height="350.636" Width="448.982" ResizeMode="CanMinimize" Icon="/numberpad.ico" KeyUp="Window_KeyUp" Loaded="WindowMain_Loaded">
+        Title="Quick Launcher 2.2.2" Height="372" Width="448.982" ResizeMode="CanMinimize" Icon="/numberpad.ico" KeyUp="Window_KeyUp" Loaded="WindowMain_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="BtnCreate" Content="Create/Open" Margin="319,257,0,0" Click="BtnCreateNote_Click" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" TabIndex="52"/>
+        <Button x:Name="BtnExecute" Content="Open/Execute" Margin="319,257,0,0" Click="BtnExecute_Click"  Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" TabIndex="52"/>
         <ComboBox x:Name="CmbNoteName" IsEditable="True" HorizontalAlignment="Left" Margin="10,257,0,0" VerticalAlignment="Top" Width="304" KeyUp="CmbNoteName_KeyUp" Height="28" TabIndex="1" GotFocus="CmbNoteName_GotFocus" MaxDropDownHeight="180" IsTextSearchCaseSensitive="False"/>
         <Label x:Name="LblStatus" Content="OK GO" Height="26" VerticalAlignment="Bottom" MouseDoubleClick="LblStatus_MouseDoubleClick" Margin="0,0,0,-0.333"/>
-        <Label x:Name="LblCreateNote" Content="Note: (use tab enter to create)" Margin="5,230,0,0" HorizontalAlignment="Left" Width="183" Height="26" VerticalAlignment="Top" MouseDoubleClick="LblCreateNote_MouseDoubleClick"/>
+        <Label x:Name="LblCreateNote" Content="Search Note:" Margin="5,230,0,0" HorizontalAlignment="Left" Width="183" Height="26" VerticalAlignment="Top"/>
+        <Label x:Name="LblCreateNoteHelp" Content="* Use '\' to execute command, support 'add/create', 'del/delete'." Margin="10,283,0,0" HorizontalAlignment="Left" Width="409" Height="21" VerticalAlignment="Top" FontSize="10"/>
         <Button x:Name="BtnAction1" Margin="10,153,0,0" Click="BtnAction1_Click" Height="55" VerticalAlignment="Top" TabIndex="52" HorizontalAlignment="Left" Width="133" HorizontalContentAlignment="Left" VerticalContentAlignment="Top">
             <TextBlock x:Name="BtnAction1Text" Text="Action 1" TextWrapping="Wrap"/>
         </Button>
@@ -41,7 +42,7 @@
         <Button x:Name="BtnAction9" Margin="286,33,0,0" Click="BtnAction9_Click" Height="55" VerticalAlignment="Top" TabIndex="52" HorizontalAlignment="Left" Width="133" HorizontalContentAlignment="Left" VerticalContentAlignment="Top">
             <TextBlock x:Name="BtnAction9Text" Text="Action 9" TextWrapping="Wrap"/>
         </Button>
-        <Label x:Name="LblNumericKeypad" Content="Numeric keypad:" Margin="4,6,0,0" HorizontalAlignment="Left" Width="100" Height="26" VerticalAlignment="Top" MouseDoubleClick="LblCreateNote_MouseDoubleClick"/>
-        <Label x:Name="LblNumericKeypadNote" Content="Note: press Ctrl to enter execute setting." Margin="6,205,0,0" HorizontalAlignment="Left" Width="242" Height="26" VerticalAlignment="Top" MouseDoubleClick="LblCreateNote_MouseDoubleClick"/>
+        <Label x:Name="LblNumericKeypad" Content="Numeric keypad:" Margin="4,6,0,0" HorizontalAlignment="Left" Width="100" Height="26" VerticalAlignment="Top"/>
+        <Label x:Name="LblNumericKeypadNote" Content="Note: press Ctrl to enter execute setting." Margin="6,205,0,0" HorizontalAlignment="Left" Width="242" Height="26" VerticalAlignment="Top"/>
     </Grid>
 </Window>
