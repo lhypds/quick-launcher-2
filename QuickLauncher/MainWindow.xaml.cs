@@ -168,7 +168,27 @@ namespace QuickLauncher
 
         private void CmbNoteName_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter) OpenOrExecute();
+            if (e.Key == Key.Enter)
+            {
+                OpenOrExecute();
+            }
+            else if (e.Key == Key.Down)
+            {
+                CmbNoteName.IsDropDownOpen = true;
+            }
+            else
+            {
+                if (CmbNoteName.Text.StartsWith("\\"))
+                {
+                    // Command mode
+                    CmbNoteName.IsDropDownOpen = false;
+                }
+                else
+                {
+                    // Other input show dropdown always
+                    CmbNoteName.IsDropDownOpen = true;
+                }
+            }
         }
 
         private void TxtNoteName_KeyUp(object sender, KeyEventArgs e)
@@ -223,7 +243,7 @@ namespace QuickLauncher
                 string filePath = NoteFolderPath + note + " Note.txt";
                 if (File.Exists(filePath))
                 {
-                    LblStatus.Content = note + " Note.txt already exist.";
+                    LblStatus.Content = "Openning " + note + " Note.txt...";
                     FadeStatusBarText();
                     Process.Start(filePath);
                 }
