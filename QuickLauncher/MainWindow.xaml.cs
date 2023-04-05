@@ -29,6 +29,10 @@ namespace QuickLauncher
         List<string> Notes = new List<string>();
         string NoteFolderPath = @"C:\Users\" + Environment.UserName + @"\iCloudDrive\Storage.sync\Note\";
 
+        // Default text editor can be setup with config file
+        // Example: default_text_editor,C:\Program Files\Sublime Text\sublime_text.exe
+        string DefaultTextEditor = "";
+
         public MainWindow()
         {
             InitializeComponent();
@@ -43,6 +47,7 @@ namespace QuickLauncher
 
             // Load config
             SetEnableNote(SimpleConfigUtils.IsTrue("enable_note"));
+            DefaultTextEditor = SimpleConfigUtils.GetConfig("default_text_editor");
 
             // Load action name
             RefreshBtnContent();
@@ -233,7 +238,7 @@ namespace QuickLauncher
                     }
 
                     FadeStatusBarText();
-                    Process.Start(filePath);
+                    OpenNote(filePath);
                 }
 
                 // 2. Delete
@@ -254,7 +259,6 @@ namespace QuickLauncher
                 {
                     LblStatus.Content = "Openning " + note + " Note.txt...";
                     FadeStatusBarText();
-                    Process.Start(filePath);
                 }
                 else
                 {
@@ -262,12 +266,24 @@ namespace QuickLauncher
                     CreateNote(note, filePath);
                     LblStatus.Content = note + " Note.txt created.";
                     FadeStatusBarText();
-                    Process.Start(filePath);
                 }
+                OpenNote(filePath);
             }
 
             // Exit application
             System.Windows.Application.Current.Shutdown();
+        }
+
+        private void OpenNote(string notePath)
+        {
+            if (string.IsNullOrEmpty(DefaultTextEditor))
+            { 
+                Process.Start(notePath); 
+            }
+            else
+            {
+                Process.Start(DefaultTextEditor, "\"" + notePath + "\"");
+            }
         }
 
         private void CreateNote(string note, string filePath)
