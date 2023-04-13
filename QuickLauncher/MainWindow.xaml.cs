@@ -57,6 +57,10 @@ namespace QuickLauncher
             foreach (var noteFilePath in noteFilePaths)
             {
                 string noteName = noteFilePath.Replace(".txt", "").Replace(NoteFolderPath, "");
+                
+                // Ignore README
+                if (noteName.Contains("README")) continue;
+
                 Notes.Add(noteName);
                 CmbNoteName.Items.Add(noteName);
             }
