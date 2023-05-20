@@ -27,7 +27,7 @@ namespace QuickLauncher
     public partial class MainWindow : Window
     {
         List<string> Notes = new List<string>();
-        string NoteFolderPath = @"C:\Users\" + Environment.UserName + @"\iCloudDrive\Storage.sync\Note\";
+        string NoteFolderPath = @"C:\Users\" + Environment.UserName + @"\iCloudDrive\Storage\Note\";
 
         // Default text editor can be setup with config file
         // Example: default_text_editor,C:\Program Files\Sublime Text\sublime_text.exe
