@@ -263,15 +263,12 @@ namespace QuickLauncher
                 {
                     LblStatus.Content = "Openning " + note + " Note.txt...";
                     FadeStatusBarText();
+                    OpenNote(filePath);
                 }
                 else
                 {
-                    // Create note
-                    CreateNote(note, filePath);
-                    LblStatus.Content = note + " Note.txt created.";
-                    FadeStatusBarText();
+                    LblStatus.Content = "Not found.";
                 }
-                OpenNote(filePath);
             }
 
             // Exit application
