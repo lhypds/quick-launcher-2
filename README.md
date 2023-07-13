@@ -9,7 +9,7 @@ User can use [WinHotKey](https://directedge.us/content/winhotkey/) or [AutoHotKe
 Screenshot
 ----------
 
-![image](https://user-images.githubusercontent.com/4526937/192179517-a1aece82-b9c7-462b-a133-dbc0fb3447b7.png)
+<img src="https://github.com/lhypds/quick-launcher-2/assets/4526937/ab86a4ca-0a10-464b-9c06-4b30fa870b54" width="500" />
 
 
 Shortcut
