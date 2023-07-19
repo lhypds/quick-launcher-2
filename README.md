@@ -19,6 +19,10 @@ config.txt
 Example, `enable_note,true`  
 Enable note support.  
 
+`note_folder_path,NOTE_FOLDRE_PATH`  
+Example, `enable_note,C:\note`  
+Set the note folder path.  
+
 `default_text_editor,TEXT_EDITOR_PATH`  
 Example, `default_text_editor,C:\Program Files\Sublime Text\sublime_text.exe`  
 Set default text editor.  
