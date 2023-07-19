@@ -27,11 +27,11 @@ namespace QuickLauncher
     public partial class MainWindow : Window
     {
         List<string> Notes = new List<string>();
-        string NoteFolderPath = @"C:\Users\" + Environment.UserName + @"\iCloudDrive\Storage\Note\";
 
         // Default text editor can be setup with config file
         // Example: default_text_editor,C:\Program Files\Sublime Text\sublime_text.exe
         string DefaultTextEditor = "";
+        string NoteFolderPath = @"C:\Users\" + Environment.UserName + @"\iCloudDrive\Storage\Note\";  // by default use iCloud Drive
 
         public MainWindow()
         {
@@ -45,9 +45,27 @@ namespace QuickLauncher
             this.Left = (screenWidth / 2) - (windowWidth / 2);
             this.Top = (screenHeight / 2) - (windowHeight / 2);
 
-            // Load config
-            SetEnableNote(SimpleConfigUtils.IsTrue("enable_note"));
             DefaultTextEditor = SimpleConfigUtils.GetConfig("default_text_editor");
+
+            // Initialize note
+            SetEnableNote(SimpleConfigUtils.IsTrue("enable_note"));
+            if ((bool)SimpleConfigUtils.IsTrue("enable_note"))
+            {
+                // Load note folder path
+                if (!Directory.Exists(NoteFolderPath))
+                {
+                    NoteFolderPath = SimpleConfigUtils.GetConfig("note_folder_path");
+                }
+
+                if (!Directory.Exists(NoteFolderPath))
+                {
+                    MessageBox.Show("Note folder is not found, please check note_path in config file.", "Error");
+
+                    // Close application
+                    System.Windows.Application.Current.Shutdown();
+                    return;
+                }
+            }
 
             // Load action name
             RefreshBtnContent();
